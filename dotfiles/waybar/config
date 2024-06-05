@@ -1,0 +1,139 @@
+{
+    "output":"eDP-1",
+    "height": 25, 
+    "layer": "top", 
+    "margin-top": 3,
+    "margin-left": 5,
+    "margin-bottom": 0,
+    "margin-right": 5,
+    "spacing": 1, 
+    "modules-left": ["tray", "hyprland/workspaces"],
+    "modules-center": ["custom/playerlabel"],
+    "modules-right": ["clock", "backlight", "pulseaudio", "network", "battery", "custom/power-menu"],
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "format":" {icon} ",
+        "format-icons": {
+        "1": "一",
+        "2": "二",
+        "3": "三 ",
+        "4": "四",
+        "5": "五",
+        "6": "六",
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{}"
+    },
+
+
+    "tray": {
+        "spacing": 10
+    },
+
+
+    "clock": {
+        "format": "<span color='#cdd6f4'> </span>{:%a %b %d}",
+        "format-alt": "<span color='#cdd6f4'> </span>{:%I:%M %p}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+
+
+    "custom/playerctl": {
+        "format": "{icon}",
+        "return-type": "json",
+        "max-length": 36,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click": "playerctl play-pause",
+        "format-icons": {
+          "Playing": "<span foreground='#CDD6F4' font='13' rise='-1000'>󰏥</span>",
+          "Paused": "<span foreground='#11111B' font='13' rise='-1000'>󰐌</span>"
+        },
+      },
+
+
+      "custom/playerlabel": {
+        "format": "<span>{}</span>",
+        "return-type": "json",
+        "max-length": 40,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click-middle": "playerctl play-pause",
+        "on-click": "playerctl previous",
+        "on-click-right": "playerctl next",
+        "format-icons": {
+          "Playing": "<span foreground='#11111B' font='13' rise='-1000'>󰏥</span>",
+          "Paused": "<span foreground='#CDD6F4' font='13' rise='-1000'>󰐌</span>"
+        },
+      },
+      
+
+    "backlight": {
+        "device": "eDP-1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-click": "",
+    },
+
+
+    "network": {
+        "format-wifi": "直 {signalStrength}%",
+        "format-ethernet": " wired",
+        "format-disconnected": "睊",
+        "on-click": "bash ~/.config/waybar/scripts/rofi-wifi-menu.sh",
+        "format-disconnected": "Disconnected  ",
+    },
+
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "  {volume}%",
+        "format-bluetooth-muted": " ",
+        "format-muted": "婢",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+
+    "bluetooth": {
+        "on-click": "~/.config/waybar/scripts/rofi-bluetooth &",
+        "format": " {status}",
+    },
+
+
+    "battery": {
+      "bat": "BAT0",
+      "adapter": "ADP0",
+      "interval": 60,
+      "states": {
+          "warning": 30,
+          "critical": 15
+      },
+      "max-length": 20,
+      "format": "{icon} {capacity}%",
+      "format-warning": "{icon} {capacity}%",
+      "format-critical": "{icon} {capacity}%",
+      "format-charging": "<span font-family='Font Awesome 6 Free'></span> {capacity}%",
+      "format-plugged": "  {capacity}%",
+      "format-alt": "{icon} {time}",
+      "format-full": "  {capacity}%",
+      "format-icons": [" ", " ", " ", " ", " "],
+    },
+
+
+    "custom/power-menu": {
+        "format": " <span color='#cdd6f4'>⏻ </span>",
+        "on-click": "bash ~/.config/waybar/scripts/power-menu/powermenu.sh",
+    }, 
+}
+
