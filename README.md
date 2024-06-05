@@ -29,6 +29,8 @@
 
     // Instalacion de fuentes necesarias (reiniciar)
     sudo cp -r /home/user*/Downloads/* /usr/share/fonts/
+    // Instalar el gestor de arraque (despues del reinicio)
+    systemctl enable emptty.service
    <hr>
    <h3>🔧 Instalación</h3>
    <p>Aplica permisos de ejecución a 'setup.sh' e inicialo. Posteriormente debes esperar hasta que finalice.</p>
