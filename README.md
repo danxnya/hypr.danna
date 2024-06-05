@@ -13,6 +13,7 @@
    <h3>‼️ Importante !!</h3>
     <p>No jala con tarjetas Nvidia. unu</p>
     <p>Si tu internet es tan culero como el de Xala, se va a tardar la instalación.</p>
+    <p>Revisa el nombre de tu monitor con "hyprctl monitors all" despues de la instalacion, en caso de que sea diferente de "eDP-1 || HDMI-A-1" manda un Issue. unu</p>
    <hr>
    <h3>🍧 Información</h3>
     <p><a href="https://mega.nz/file/GxFVSLLY#etuNc6QRrEl6wgl_ZatvomojDhkBTFPqlKS7ELk7KAM"> -> Archivo de fuentes a instalar</a></p>
