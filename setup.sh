@@ -26,14 +26,8 @@ install_packages_yay=(
     w3m
     imagemagick
     rustup
-    localsend
-    visual-studio-code-bin
-    discord
-    spotify
-    microsoft-edge-stable-bin
-    openssh
+    firefox
     wf-recorder
-    emptty
 )
 
 # VARIABLE PARA GUARDAR LOS LOGS DE CADA INSTALACIÓN
