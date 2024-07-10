@@ -28,6 +28,7 @@ install_packages_yay=(
     rustup
     firefox
     wf-recorder
+    rofi
 )
 
 # VARIABLE PARA GUARDAR LOS LOGS DE CADA INSTALACIÓN
