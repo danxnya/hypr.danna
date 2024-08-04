@@ -1,16 +1,15 @@
 {
-    //"output":"HDMI-A-1",
     "output":"eDP-1",
-    "height": 25, 
+    "height": 28, 
     "layer": "top", 
     "margin-top": 3,
     "margin-left": 5,
     "margin-bottom": 0,
     "margin-right": 5,
     "spacing": 1, 
-    "modules-left": ["tray", "hyprland/workspaces"],
-    "modules-center": ["custom/playerlabel"],
-    "modules-right": ["clock", "backlight", "pulseaudio", "network", "battery", "custom/power-menu"],
+    "modules-left": ["custom/name","hyprland/workspaces"],
+    "modules-center": ["tray", "custom/playerlabel"],
+    "modules-right": ["clock", "backlight", "pulseaudio", "network", "battery", "custom/dot", "custom/power-menu"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -19,10 +18,10 @@
         "format-icons": {
         "1": "一",
         "2": "二",
-        "3": "三 ",
+        "3": "三",
         "4": "四",
         "5": "五",
-        "6": "六",
+        "6": "六"
         }
     },
 
@@ -30,6 +29,15 @@
         "format": "{}"
     },
 
+
+    "custom/name": {
+        "format": " Damx",
+        "on-click": "localsend"
+    },
+
+    "custom/dot": {
+        "format": ":"
+    },
 
     "tray": {
         "spacing": 10
@@ -39,7 +47,7 @@
     "clock": {
         "format": "<span color='#cdd6f4'> </span>{:%a %b %d}",
         "format-alt": "<span color='#cdd6f4'> </span>{:%I:%M %p}",
-        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
 
@@ -52,7 +60,7 @@
         "format-icons": {
           "Playing": "<span foreground='#CDD6F4' font='13' rise='-1000'>󰏥</span>",
           "Paused": "<span foreground='#11111B' font='13' rise='-1000'>󰐌</span>"
-        },
+        }
       },
 
 
@@ -60,14 +68,14 @@
         "format": "<span>{}</span>",
         "return-type": "json",
         "max-length": 40,
-        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} : {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
         "on-click-middle": "playerctl play-pause",
         "on-click": "playerctl previous",
         "on-click-right": "playerctl next",
         "format-icons": {
           "Playing": "<span foreground='#11111B' font='13' rise='-1000'>󰏥</span>",
           "Paused": "<span foreground='#CDD6F4' font='13' rise='-1000'>󰐌</span>"
-        },
+        }
       },
       
 
@@ -75,7 +83,7 @@
         "device": "eDP-1",
         "format": "{icon} {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "on-click": "",
+        "on-click": ""
     },
 
 
@@ -83,8 +91,7 @@
         "format-wifi": "直 {signalStrength}%",
         "format-ethernet": " wired",
         "format-disconnected": "睊",
-        "on-click": "bash ~/.config/waybar/scripts/rofi-wifi-menu.sh",
-        "format-disconnected": "Disconnected  ",
+        "on-click": "bash ~/.config/waybar/scripts/rofi-wifi-menu.sh"
     },
 
 
@@ -108,7 +115,7 @@
 
     "bluetooth": {
         "on-click": "~/.config/waybar/scripts/rofi-bluetooth &",
-        "format": " {status}",
+        "format": " {status}"
     },
 
 
@@ -128,13 +135,19 @@
       "format-plugged": "  {capacity}%",
       "format-alt": "{icon} {time}",
       "format-full": "  {capacity}%",
-      "format-icons": [" ", " ", " ", " ", " "],
+      "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "disk": {
+    "interval": 30,
+    "format": "Only {percentage_free}% remaining on {path}",
+    "path": "/"
     },
 
 
     "custom/power-menu": {
         "format": " <span color='#cdd6f4'>⏻ </span>",
-        "on-click": "bash ~/.config/waybar/scripts/power-menu/powermenu.sh",
-    }, 
+        "on-click": "bash ~/.config/waybar/scripts/power-menu/powermenu.sh"
+    }
 }
 

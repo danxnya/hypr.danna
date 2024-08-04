@@ -1,13 +1,13 @@
 {
     "output":"eDP-1",
-    "height": 25, 
+    "height": 32, 
     "layer": "top", 
     "margin-top": 3,
     "margin-left": 5,
     "margin-bottom": 0,
     "margin-right": 5,
     "spacing": 1, 
-    "modules-left": ["tray", "hyprland/workspaces"],
+    "modules-left": ["hyprland/workspaces", "tray"],
     "modules-center": ["custom/playerlabel"],
     "modules-right": ["clock", "backlight", "pulseaudio", "network", "battery", "custom/power-menu"],
     "hyprland/workspaces": {

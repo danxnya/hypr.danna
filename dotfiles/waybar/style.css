@@ -1,36 +1,35 @@
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
-  font-family: "Maple Mono SC NF", "otf-font-awesome";
+  border: none;
+  font-family: Maple Mono SC NF;
   font-size: 13px;
   font-weight: bold;
 }
 
- window#waybar {
-  background-color:#151423;
+window#waybar {
+  background-color: transparent;
   color: #cdd6f4;
   transition-property: background-color;
   transition-duration: 0.5s;
   border-top: 8px transparent;
-  border-radius: 0px;
+  border-radius: 7px;
   transition-duration: 0.5s;
   margin: 16px 16px;
 }
 
-#window {
-  color: #64727d;
-  margin: 0 0px;
-  border-radius: 7.8px;
+#workspaces {
   background-color: #11111B;
+  border-radius: 7px;
+  border: 2px solid #CBA6F7;
+
 }
 
-
 #workspaces button {
-  color:#C6AAE8;
+  color: #CDD6F4;
   padding: 0 3px;
   background-color: transparent;
   box-shadow: inset 0 -3px transparent;
   border: none;
-  border-radius: 0;
+
 }
 
 #workspaces button.focused {
@@ -38,12 +37,15 @@
 }
 
 #workspaces button.active {
-  color: #CDD6F4;
+  color: #cd8dda;
+  font-style: italic;
+  font-weight:normal;
 }
 
 #workspaces button.urgent {
-  background-color: #eb4d4b;
+  color: #ffffff;
 }
+
 
 
 #clock,
@@ -55,46 +57,41 @@
 #custom-power-menu {
   padding: 0px 5px;
   color: #CDD6F4;
-  border-radius: 9px;
-  margin: 4px 2px;
 }
 
-#window,
-#workspaces {
-  margin: 0 3px;
-  border-radius: 7px;
-}
 
 #tray {
+  background-color: #11111B;
   color: #CDD6F4;
-  border-radius: 5px;
-  margin: 0px 0px;
-  margin-right: 6px;
-  margin-left: 6px;
+  border-radius: 7px;
+  padding: 0px 6px;
+  margin: 0px 3px;
+  border: 2px solid #CBA6F7;
+
+
 }
 
+#window {
+  background-color: #11111B;
+  padding: 0px 9px;
+  color: #CDD6F4;
+  border-radius: 7px;
+
+}
 
 #custom-power-menu {
-  border-radius: 9.5px;
-  border-radius: 7.5px;
+  border-radius: 7px;
   padding: 0 2px;
+  
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-  margin-left: 0;
-}
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
-}
 
 #pulseaudio {
   padding-right: 10px;
 }
 
-#backlight{
+#backlight {
   padding-right: 5px;
 }
 
@@ -102,18 +99,41 @@
   padding-right: 10px;
 }
 
-#battery.charging,
-#battery.full,
-#battery.plugged {
+
+#network {
   color: #CDD6F4;
+  padding-right: 5px;
+
 }
 
-@keyframes blink {
-  to {
-    background-color: rgba(30, 34, 42, 0.5);
-    color: #CDD6F4;
-  }
+
+#custom-playerctl {
+  background: transparent;
+  padding-right: 8px;
+  font-weight: bold;
+  font-size: 10px;
 }
+
+#custom-playerlabel {
+  background: #11111B;
+  padding-left: 10px;
+  padding-right: 15px;
+  color: #CDD6F4;
+  border-radius: 7px;
+  border: 2px solid #CBA6F7;
+
+}
+
+
+#custom-name {
+  background: #11111B;
+  padding: 0px 8px;
+  color: #CDD6F4;
+  border-radius: 7px;
+  border: 2px solid #CBA6F7;
+
+}
+
 
 #battery.critical:not(.charging) {
   color: #f53c3c;
@@ -124,48 +144,60 @@
   animation-direction: alternate;
 }
 
-label:focus {
-  background-color: #000000;
-}
 
-
-#bluetooth {
+#battery.charging,
+#battery.full,
+#battery.plugged {
   color: #CDD6F4;
 }
 
-#bluetooth.disconnected {
-  color: #CDD6F4;
-}
-
-#network {
-  color: #CDD6F4;
-  padding-right: 5px;
-
-}
 #network.disconnected {
   color: #CDD6F4;
   padding-right: 5px;
 }
 
-#tray > .passive {
+#tray>.passive {
   -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
   -gtk-icon-effect: highlight;
   background-color: #eb4d4b;
 }
 
-#custom-playerctl {
-	background: transparent;
-  padding-right: 8px;
-  font-weight: bold;
-  font-size: 10px;
+window#waybar.empty #window {
+  background-color: transparent;
 }
 
-#custom-playerlabel {
-    background: transparent;
-    padding-left: 10px;
-    padding-right: 15px;
+
+label:focus {
+  background-color: #000000;
+}
+
+
+.modules-right {
+  background-color: #11111B;
+  border-radius: 7px;
+  padding: 0px 5px;
+  border: 2px solid #CBA6F7;
+
+
+
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left>widget:first-child>#workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right>widget:last-child>#workspaces {
+  margin-right: 0;
+}
+
+@keyframes blink {
+  to {
+    background-color: rgba(30, 34, 42, 0.5);
     color: #CDD6F4;
+  }
 }

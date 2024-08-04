@@ -60,6 +60,9 @@ alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
 alias cat='bat'
 alias cl='clear'
+alias remove='yay -Rs'
+alias fetch='fastfetch -c /home/dam/.config/fastfetch/presets/nyarch.jsonc'
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -117,3 +120,10 @@ bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+
+export PATH=$PATH:/home/dam/.spicetify
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/dam/.config/.dart-cli-completion/zsh-config.zsh ]] && . /home/dam/.config/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
