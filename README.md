@@ -38,7 +38,7 @@ systemctl enable emptty.service
 ```sh
 git clone https://github.com/danxnya/hypr.danna.git && cd hypr.danna/
 chmod +x setup.sh
-./setp.sh
+./setup.sh
 ```
 Now, only wait and ENJOY. ><
 
