@@ -1,7 +1,7 @@
 # hypr.danna
 
 <p align="center">
-  <img src='https://i.postimg.cc/DyrwxYCV/image.png'>
+  <img src='https://postimg.cc/jCn8LMSy'>
 </p>
 
 ## Información
