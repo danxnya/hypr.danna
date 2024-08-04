@@ -1,8 +1,6 @@
 # hypr.danna
 
-<p align="center">
-  <img src='https://postimg.cc/jCn8LMSy'>
-</p>
+[![swappy-20240804-131341.png](https://i.postimg.cc/y6v2p5qp/swappy-20240804-131341.png)](https://postimg.cc/jCn8LMSy)
 
 ## Información
 
