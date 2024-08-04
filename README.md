@@ -15,7 +15,6 @@ This is from the Danna repository. I am going to give you instructions and the n
 - Change the name of your monitor un the hyprland configs.
 
 ### 🍧 Information
-[Fonts here](https://mega.nz/file/GxFVSLLY#etuNc6QRrEl6wgl_ZatvomojDhkBTFPqlKS7ELk7KAM)
 
 -  **OS** Arch Linux
 -  **SH** zsh 5.9
@@ -25,6 +24,7 @@ This is from the Danna repository. I am going to give you instructions and the n
 ## Steps for install
 
 ### Install necessary fonts and reboot.
+[Fonts here](https://mega.nz/file/GxFVSLLY#etuNc6QRrEl6wgl_ZatvomojDhkBTFPqlKS7ELk7KAM)
 ```sh
 sudo cp -r ~/Downloads/* /usr/share/fonts/*
 ```
