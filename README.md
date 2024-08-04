@@ -3,7 +3,7 @@
     <p align="center">
      <img src='https://media.tenor.com/CUtwrgs0dVUAAAAd/anime-girl.gif'>
    </p>
-    <img src='https://i.postimg.cc/2yXGZB5N/image.png'>
+    <img src='https://i.postimg.cc/DyrwxYCV/image.png'>
    <br/>
    <h3>¡Hola, moreno! ¡Bievenido! <33</h3>
    <p>
