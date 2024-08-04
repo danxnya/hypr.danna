@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# PAQUETES YAY
+# YAY PACKAGES
 
 install_packages_yay=(
     kitty
@@ -31,11 +31,11 @@ install_packages_yay=(
     rofi
 )
 
-# VARIABLE PARA GUARDAR LOS LOGS DE CADA INSTALACIÓN
+# VARIABLE TO STORE INSTALLATION LOGS
 
 INSTLOG="install.log"
 
-# PRESENTACIÓN
+# PRESENTATION
 
 function present() {
     array=(
@@ -53,13 +53,12 @@ function present() {
     )
 
     for letter in ${array[@]}; do
-    echo -en "\e[95m$letter\e[0m"
-    sleep 0.2
+        echo -en "\e[95m$letter\e[0m"
+        sleep 0.2
     done
 }
 
-
-# PROGRESO DE BARRA MOSTRADO AL USUARIO
+# PROGRESS BAR SHOWN TO THE USER
 
 function show_progress() {
     while ps | grep $1 &> /dev/null;
@@ -71,37 +70,37 @@ function show_progress() {
     sleep 2
 }
 
-# FUNCION ENCARGADA DE INSTALAR LOS PAQUETES Y DEPENDENCIAS
+# FUNCTION TO INSTALL PACKAGES AND DEPENDENCIES
 
 function install_software() {
     echo -en $1
     yay -S --noconfirm $1 &>> $INSTLOG &
     show_progress $!
 
-    # comprobamos si se ha instalado correctamente
+    # check if installed correctly
     if yay -Q $1 &>> /dev/null ; then
         echo -e ""
     else
-        # si no se ha instalado correctamente se imprimirá un mensaje de error
-        echo -e "$1 no ha sido instalado correctamente, por favor comprueba >< install.log"
+        # if not installed correctly, print an error message
+        echo -e "$1 was not installed correctly, please check >< install.log"
         exit 0
     fi
 }
 
-# ACTUALIZAR SISTEMA
+# SYSTEM UPDATE
 
 function update() {
-    echo -en "Actualizando."
+    echo -en "Updating."
     sudo pacman -Syu --noconfirm &>> $INSTLOG &
     show_progress $!
     echo -en "\n"
 }
 
-# INSTALACIÓN PACKAGE MANAGER YAY
+# YAY PACKAGE MANAGER INSTALLATION
 
 function packagemanager() {
     if [ ! -f /sbin/yay ]; then  
-        echo -en "Instalando yay."
+        echo -en "Installing yay."
         git clone https://aur.archlinux.org/yay-git &>> $INSTLOG
         cd yay-git
         makepkg -si --noconfirm &>> ../$INSTLOG &
@@ -109,7 +108,7 @@ function packagemanager() {
         if [ -f /sbin/yay ]; then
             :
         else
-            echo -e "La instalación de yay ha fallado, por favor lee el archivo >< install.log"
+            echo -e "Yay installation failed, please read the file >< install.log"
             exit 0
         fi
     fi
@@ -119,7 +118,7 @@ function packagemanager() {
 
 function setup() {
     echo -e "\n"
-    echo -en "\e[33m[x] Instalando paquetes Yay...\e[0m\n"
+    echo -en "\e[33m[x] Installing Yay packages...\e[0m\n"
     for SOFTWR in ${install_packages_yay[@]}; do
         if [ "$SOFTWR" == 'rustup' ]; then
             sudo pacman -R --noconfirm rust > /dev/null 2>&1
@@ -130,29 +129,28 @@ function setup() {
     done
 }
 
-# SE COPIAN LOS DOTFILES
+# COPY DOTFILES
 
 function copia() {
     echo -en "\n"
-    echo -en "\e[33m[x] Copiando configuración...\e[0m\n"
+    echo -en "\e[33m[x] Copying configuration...\e[0m\n"
     echo -en "dotfiles."
 
-    mkdir "$HOME/.config" > /dev/null 2>&1
+    mkdir -p "$HOME/.config" > /dev/null 2>&1
 
-    mkdir "$HOME/.config/hypr" > /dev/null 2>&1
+    mkdir -p "$HOME/.config/hypr" > /dev/null 2>&1
     cp -r $1/dotfiles/hypr/* "$HOME/.config/hypr/"
 
-    mkdir "$HOME/.config/rofi" > /dev/null 2>&1
+    mkdir -p "$HOME/.config/rofi" > /dev/null 2>&1
     cp -r $1/dotfiles/rofi/* "$HOME/.config/rofi/"
 
-    mkdir "$HOME/.config/kitty" > /dev/null 2>&1
+    mkdir -p "$HOME/.config/kitty" > /dev/null 2>&1
     cp -r $1/dotfiles/kitty/* "$HOME/.config/kitty/"
 
-    mkdir "$HOME/.config/BetterDiscord" > /dev/null 2>&1
+    mkdir -p "$HOME/.config/BetterDiscord" > /dev/null 2>&1
     cp -r $1/dotfiles/BetterDiscord/* "$HOME/.config/BetterDiscord/"
 
-
-    mkdir "$HOME/.config/waybar" > /dev/null 2>&1
+    mkdir -p "$HOME/.config/waybar" > /dev/null 2>&1
     cp -r $1/dotfiles/waybar/* "$HOME/.config/waybar/"
     chmod +x "$HOME/.config/waybar/scripts/mediaplayer.py" "$HOME/.config/waybar/scripts/wlrecord.sh"
     chmod +x "$HOME/.config/waybar/scripts/playerctl/playerctl.sh"
@@ -172,24 +170,23 @@ function copia() {
     sudo cp -r $1/dotfiles/powerlevel10k/root/.p10k.zsh "/root/"
 
     cd /usr/share
-    sudo mkdir zsh-sudo
+    sudo mkdir -p zsh-sudo
     sudo chown $USER:$USER zsh-sudo/
     cd zsh-sudo
     wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh > /dev/null 2>&1
 
-
-    mkdir "$HOME/.config/scripts" > /dev/null 2>&1
+    mkdir -p "$HOME/.config/scripts" > /dev/null 2>&1
     cp -r $1/dotfiles/scripts/* "$HOME/.config/scripts"
     chmod +x -R $HOME/.config/scripts/
 
-    mkdir "$HOME/.config/swappy" > /dev/null 2>&1
+    mkdir -p "$HOME/.config/swappy" > /dev/null 2>&1
     cp -r $1/dotfiles/swappy/* "$HOME/.config/swappy"
 
     echo -en "\e[32mOK\e[0m"
     echo -en "\n"
 }
 
-# FINALIZACION
+# FINALIZATION
 
 function finalizacion() {
     echo ""
@@ -197,7 +194,7 @@ function finalizacion() {
     echo ""
 }
 
-# SE LLAMA A TODAS LAS FUNCIONES PROGRESIVAMENTE
+# CALL ALL FUNCTIONS PROGRESSIVELY
 
 function call() {
     ruta=$(pwd)
@@ -208,23 +205,23 @@ function call() {
     finalizacion
 }
 
-# SE COMPRUEBA SI EL INSTALADOR SE EJECUTA COMO ROOT
+# CHECK IF THE INSTALLER IS RUNNING AS ROOT
 
 if [ $(whoami) != 'root' ]; then
     present
-    # confirmación de proceder a instalar
+    # confirmation to proceed with installation
     echo -en '\n'
-    read -rep 'Camara culero!! Me instalo o huevos.(y,n)? ' CONTINST
+    read -rep 'Shall we proceed with the installation? (y,n)? ' CONTINST
     if [[ $CONTINST == "Y" || $CONTINST == "y" ]]; then
         echo -en "\n"
-        echo -en "\e[33m[x] Iniciando >.<...\e[0m\n"
+        echo -en "\e[33m[x] Starting >.<...\e[0m\n"
         sudo touch /tmp/hyprv.tmp
         call
     else
-        echo -e "Saliendo del script, no se han realizado cambios en tu sistema."
+        echo -e "Exiting the script, no changes have been made to your system."
         exit 0
     fi
 else
-    echo 'Error, el script no debe ser ejecutado como root.'
+    echo 'Error, the script should not be run as root.'
     exit 0
 fi
