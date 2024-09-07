@@ -1,7 +1,10 @@
 {
     "output":"HDMI-A-1",
     "height": 28, 
-    "layer": "top", 
+    "layer": "top",
+    "mode": "dock",
+    "gtk-layer-shell": true,
+    "reload_style_on_change": true,
     "margin-top": 3,
     "margin-left": 5,
     "margin-bottom": 0,

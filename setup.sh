@@ -29,6 +29,7 @@ install_packages_yay=(
     firefox
     wf-recorder
     rofi
+    betterdiscordctl
 )
 
 # VARIABLE TO STORE INSTALLATION LOGS
@@ -175,6 +176,8 @@ function copia() {
     cd zsh-sudo
     wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh > /dev/null 2>&1
 
+    betterdiscordctl install > /dev/null 2>&1
+
     mkdir -p "$HOME/.config/scripts" > /dev/null 2>&1
     cp -r $1/dotfiles/scripts/* "$HOME/.config/scripts"
     chmod +x -R $HOME/.config/scripts/
@@ -190,7 +193,7 @@ function copia() {
 
 function finalizacion() {
     echo ""
-    echo "YA ME VINE. uwu"
+    echo "All good?. ><"
     echo ""
 }
 

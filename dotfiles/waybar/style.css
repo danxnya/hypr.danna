@@ -1,203 +1,214 @@
 * {
-  border: none;
-  font-family: Maple Mono SC NF;
-  font-size: 13px;
-  font-weight: bold;
+    border: none;
+    font-family: "Maple Mono SC NF";
+    font-weight: bold;
+    font-size: 13px;
+    min-height: 11px;
 }
+
+/* @import "theme.css"; */
+@import "themeblack.css";
 
 window#waybar {
-  background-color: transparent;
-  color: #cdd6f4;
-  transition-property: background-color;
-  transition-duration: 0.5s;
-  border-top: 8px transparent;
-  border-radius: 7px;
-  transition-duration: 0.5s;
-  margin: 16px 16px;
-}
-
-#workspaces {
-  background-color: #11111B;
-  border-radius: 7px;
-  border: 2px solid #CBA6F7;
+    background: transparent;
+    border-radius: 7px;
 
 }
 
+tooltip {
+    background: @main-bg;
+    color: @text;
+    border: solid;
+    border-radius: 7px;
+    border-width: 1px;
+    border-color: white;
+}
+
+/* WORKSPACE BUTTONS */
 #workspaces button {
-  color: #CDD6F4;
-  padding: 0 3px;
-  background-color: transparent;
-  box-shadow: inset 0 -3px transparent;
-  border: none;
-
+    box-shadow: none;
+    padding: 0px;
+    border-radius: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-right: 0px;
+    color: @text-alt;
+    animation: ws_normal 20s ease-in-out 1;
 }
-
-#workspaces button.focused {
-  color: #bf616a;
-}
-
 #workspaces button.active {
-  color: #cd8dda;
-  font-style: italic;
-  font-weight:normal;
+    background: @text;
+    color: @text-alt;
+    margin-left: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-right: 2px;
+    animation: ws_active 2s ease-in-out 1;
+}
+#workspaces button:hover {
+    background: @wb-hvr-bg;
+    color: @wb-hvr-fg;
+    animation: ws_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-#workspaces button.urgent {
-  color: #ffffff;
-}
-
-
-
+/* SPACING */
+#custom-ws,
+#workspaces,
+#window,
+#custom-cpuinfo
+#memory,
+#cpu,
 #clock,
-#battery,
-#backlight,
-#network,
 #pulseaudio,
-#bluetooth,
-#custom-power-menu {
-  padding: 0px 5px;
-  color: #CDD6F4;
+#backlight,
+#battery,
+#custom-power,
+#mpris,
+#custom-notifications {
+    margin-bottom: 0px;
+    opacity: 1;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: @text-alt; 
 }
 
 
-#tray {
-  background-color: #11111B;
-  color: #CDD6F4;
-  border-radius: 7px;
-  padding: 0px 6px;
-  margin: 0px 3px;
-  border: 2px solid #CBA6F7;
-
-
+/* MODULES */
+/* WINDOW ICON */
+#custom-paddl {
+    font-size: 11.5pt;
+    margin-bottom: -2px;
+    padding-right: 2px;
+    background: transparent;
+}
+#custom-ws {
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    background: @main-bg;
 }
 
+
+/* WORKSPACES */
+#workspaces {
+    border-radius: 7px;
+    border: 2px solid @text;
+    padding: 0;
+    background: @bar-bg;
+}
+
+
+/* WINDOW TITLE */
 #window {
-  background-color: #11111B;
-  padding: 0px 9px;
-  color: #CDD6F4;
-  border-radius: 7px;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+}
+
+/* TEMPERATURE */
+#custom-paddc {
+    padding-right: 3px;
+}
+
+
+
+
+#clock.time {
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    background: @bar-bg;
+    color: @text-alt;
+}
+
+
+/* DATE */
+#clock.date {
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    border-radius: 7px;
+    background: @bar-bg;
+    color: @text-alt;
+}
+
+
+/* CONNECTION */
+#custom-wifi {
+    padding-left: 4px;
+    padding-right: 4px;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    border-radius: 7px;
+    background: @bar-bg;
+    color: @text-alt;
 
 }
 
-#custom-power-menu {
-  border-radius: 7px;
-  padding: 0 2px;
-  
-}
 
+/* MEDIA INFO */
+#custom-playerlabel {
+    background-color: @main-bg;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 7px;
+    color: @text-alt;
+
+    border: 2px solid @text;
+    margin: 0px 3px;
+
+}
 
 
 #pulseaudio {
-  padding-right: 10px;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    background: @bar-bg;
+    border-radius: 7px;
+    color: @text-alt;
 }
 
-#backlight {
-  padding-right: 5px;
-}
+
 
 #battery {
-  padding-right: 10px;
-}
-
-
-#network {
-  color: #CDD6F4;
-  padding-right: 5px;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    background: @bar-bg;
+    border-radius: 7px;
+    color: @text-alt;
 
 }
 
-
-#custom-playerctl {
-  background: transparent;
-  padding-right: 8px;
-  font-weight: bold;
-  font-size: 10px;
+#custom-power {
+    color: @text-alt;
+    background: @text;
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 7px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 4px;
+}
+#custom-paddr {
+    font-size: 11.5pt;
+    color: @main-bg;
+    margin-bottom: -2px;
 }
 
-#custom-playerlabel {
-  background: #11111B;
-  padding-left: 10px;
-  padding-right: 15px;
-  color: #CDD6F4;
-  border-radius: 7px;
-  border: 2px solid #CBA6F7;
-
-}
-
-
-#custom-name {
-  background: #11111B;
-  padding: 0px 8px;
-  color: #CDD6F4;
-  border-radius: 7px;
-  border: 2px solid #CBA6F7;
-
-}
-
-
-#battery.critical:not(.charging) {
-  color: #f53c3c;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-
-#battery.charging,
-#battery.full,
-#battery.plugged {
-  color: #CDD6F4;
-}
-
-#network.disconnected {
-  color: #CDD6F4;
-  padding-right: 5px;
-}
-
-#tray>.passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray>.needs-attention {
-  -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
-}
-
-window#waybar.empty #window {
-  background-color: transparent;
-}
-
-
-label:focus {
-  background-color: #000000;
-}
-
-
-.modules-right {
-  background-color: #11111B;
-  border-radius: 7px;
-  padding: 0px 5px;
-  border: 2px solid #CBA6F7;
-
-
-
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left>widget:first-child>#workspaces {
-  margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right>widget:last-child>#workspaces {
-  margin-right: 0;
-}
-
-@keyframes blink {
-  to {
-    background-color: rgba(30, 34, 42, 0.5);
+#tray {
+    background-color: @bar-bg;
     color: #CDD6F4;
+    border-radius: 7px;
+    padding: 0px 6px;
+    margin: 0px 3px;
+    border: 2px solid @text;
+  
   }
-}
+
+  #tray>.passive {
+    -gtk-icon-effect: dim;
+  }
+  
+  #tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+  }
+
+  .modules-right {
+    background-color: @bar-bg;
+    border-radius: 7px;
+    border: 2px solid @text;
+  }

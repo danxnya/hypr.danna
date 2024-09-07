@@ -1,0 +1,202 @@
+* {
+  border: none;
+  font-family: Maple Mono SC NF;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+window#waybar {
+  background-color: transparent;
+  color: #cdd6f4;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border-top: 8px transparent;
+  border-radius: 7px;
+  transition-duration: 0.5s;
+  margin: 16px 16px;
+}
+
+#workspaces {
+  background-color: #11111B;
+  border-radius: 7px;
+  border: 1px solid #CBA6F7;
+  margin: 0 3px;
+}
+
+#workspaces button {
+  color: #CDD6F4;
+  padding: 0 3px;
+  background-color: transparent;
+  box-shadow: inset 0 -3px transparent;
+  border: none;
+
+}
+
+#workspaces button.focused {
+  color: #bf616a;
+}
+
+#workspaces button.active {
+  color: #cd8dda;
+  font-style: italic;
+  font-weight:normal;
+}
+
+#workspaces button.urgent {
+  color: #ffffff;
+}
+
+
+
+#clock,
+#battery,
+#backlight,
+#network,
+#pulseaudio,
+#bluetooth,
+#custom-power-menu {
+  padding: 0px 5px;
+  color: #CDD6F4;
+}
+
+
+#tray {
+  background-color: #11111B;
+  color: #CDD6F4;
+  border-radius: 7px;
+  padding: 0px 6px;
+  margin: 0px 3px;
+  border: 1px solid #CBA6F7;
+
+}
+
+#window {
+  background-color: #11111B;
+  padding: 0px 9px;
+  color: #CDD6F4;
+  border-radius: 7px;
+
+}
+
+#custom-power-menu {
+  border-radius: 7px;
+  padding: 0 2px;
+  
+}
+
+
+
+#pulseaudio {
+  padding-right: 10px;
+}
+
+#backlight {
+  padding-right: 5px;
+}
+
+#battery {
+  padding-right: 10px;
+}
+
+
+#network {
+  color: #CDD6F4;
+  padding-right: 5px;
+
+}
+
+
+#custom-playerctl {
+  background: transparent;
+  padding-right: 8px;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+#custom-playerlabel {
+  background: #11111B;
+  padding-left: 10px;
+  padding-right: 15px;
+  color: #CDD6F4;
+  border-radius: 7px;
+  border: 1px solid #CBA6F7;
+
+}
+
+
+#custom-name {
+  background: #11111B;
+  padding: 0px 8px;
+  color: #CDD6F4;
+  border-radius: 7px;
+  border: 1px solid #CBA6F7;
+
+}
+
+
+#battery.critical:not(.charging) {
+  color: #f53c3c;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+
+#battery.charging,
+#battery.full,
+#battery.plugged {
+  color: #CDD6F4;
+}
+
+#network.disconnected {
+  color: #CDD6F4;
+  padding-right: 5px;
+}
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+
+label:focus {
+  background-color: #000000;
+}
+
+
+.modules-right {
+  background-color: #11111B;
+  border-radius: 7px;
+  padding: 0px 5px;
+  border: 1px solid #CBA6F7;
+
+
+
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left>widget:first-child>#workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right>widget:last-child>#workspaces {
+  margin-right: 0;
+}
+
+@keyframes blink {
+  to {
+    background-color: rgba(30, 34, 42, 0.5);
+    color: #CDD6F4;
+  }
+}
