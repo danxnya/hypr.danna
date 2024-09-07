@@ -23,7 +23,9 @@ This is from the Danna repository. I am going to give you instructions and the n
 [Fonts here](https://mega.nz/file/GxFVSLLY#etuNc6QRrEl6wgl_ZatvomojDhkBTFPqlKS7ELk7KAM)
 ```sh
 cd Downloads/ && unzip fonts.zip
-// if you don't have other files on downloads, in another case, switch the directory direction.
+```
+*if you don't have other files on downloads, in another case, switch the directory direction.*
+```sh
 sudo cp -r ~/Downloads/* /usr/share/fonts/*
 ```
 Install your favorite desktop manager, I use `emptty`.
