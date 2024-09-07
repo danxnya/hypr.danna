@@ -1,6 +1,6 @@
 # hypr.danna
 [![image.png](https://i.postimg.cc/s2zMMbt1/image.png)](https://postimg.cc/3kL86frH)
-## Información
+## Information
 
 ### Welcome! These are my dotfiles <33
 This is from the Danna repository. I am going to give you instructions and the necessary dependencies for my theme. ^^
