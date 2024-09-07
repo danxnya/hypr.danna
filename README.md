@@ -1,7 +1,5 @@
 # hypr.danna
-
-https://cdn.discordapp.com/attachments/635625917623828520/1279609842687938570/image.png?ex=66dcfa08&is=66dba888&hm=7b6a2e09af94bfba325868113846232f32478357d42c782285b977e0e540a0e0&
-
+[![swappy-20240804-131341.png]([https://i.postimg.cc/y6v2p5qp/swappy-20240804-131341.png)](https://postimg.cc/jCn8LMSy](https://imgur.com/Bb7hHbZ))
 ## Información
 
 ### Welcome! These are my dotfiles <33
