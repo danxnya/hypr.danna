@@ -36,6 +36,8 @@
         
         //"cpu",                  // cpu
 
+        "custom/swww",          // wallpaper auto changer
+
         "custom/wifi",          // connection
         
         "clock#time",           // time
@@ -49,6 +51,7 @@
         "battery",              // battery
 
         "custom/power"          // power button
+
     ],
 
 // modules
@@ -73,28 +76,8 @@
     },
 
     "hyprland/window": {
-        "format": "{}",
-        "separate-outputs": true,
-        "rewrite": {
-            "dam@damx:(.*)": "  $1",
-            "(.*)dam@damx:~": "  dam@damx",
-            "(.*)Zen Browser": " Zen Browser",
-            "(.*)Obsidian": " Obsidian",
-            "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞</span>  $1",
-            "(.*)Visual Studio Code": "<span foreground='#89b4fa' font='15px'>󰨞</span>  Visual Studio Code",
-            "(.*)spotify": "Spotify",
-            "OBS(.*)": "<span foreground='#a6adc8'>󰐌</span>  OBS Studio",
-            "VLC media player": "<span foreground='#fab387'>󰕼</span>  VLC Media Player",
-            "qView": "  qView",
-            "(.*).jpg": "  $1.jpg",
-            "(.*).png": "  $1.png",
-            "(.*).svg": "  $1.svg",
-            "/": "  File Manager",
-            "~": "zsh",
-            "": "<span foreground='#cba6f7' font='19px'></span> Dam 󰅂 Hyprland"
-        },
-        "min-length": 5,
-        "max-length": 45
+        "format": "Dam > Hyprland",
+        "tooltip": false
     },
 
     "tray": {
@@ -177,7 +160,7 @@
         "on-click-middle": "playerctl play-pause",
         "on-click": "playerctl previous",
         "on-click-right": "playerctl next",
-        "tooltip": true
+        "tooltip": false
       },
 
 
@@ -248,6 +231,13 @@
     "custom/paddr": {
         "format": "",
         "tooltip": false
+    },
+
+    "custom/swww": {
+        "format": "<span font='12'></span>",
+        "on-click": "bash ~/.config/waybar/scripts/swww.sh",
+        "tooltip": false
     }
 }
+
 
