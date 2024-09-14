@@ -30,6 +30,7 @@ install_packages_yay=(
     wf-recorder
     rofi
     betterdiscordctl
+    swwww
 )
 
 # VARIABLE TO STORE INSTALLATION LOGS
