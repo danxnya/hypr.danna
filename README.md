@@ -1,5 +1,5 @@
 # hypr.danna
-[![image.png](https://i.postimg.cc/s2zMMbt1/image.png)](https://postimg.cc/3kL86frH)
+[![swappy-20241101-151144.png](https://i.postimg.cc/MGw6906G/swappy-20241101-151144.png)](https://postimg.cc/JsTCnkBw)
 ## Information
 
 ### Welcome! These are my dotfiles <33
