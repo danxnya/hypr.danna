@@ -19,6 +19,13 @@ This is from the Danna repository. I am going to give you instructions and the n
 
 ## Steps for install
 
+🔧 Script
+```sh
+git clone https://github.com/danxnya/hypr.danna.git && cd hypr.danna/
+chmod +x setup.sh
+./setup.sh
+```
+
 ### Install necessary fonts and reboot.
 [Fonts here](https://mega.nz/file/GxFVSLLY#etuNc6QRrEl6wgl_ZatvomojDhkBTFPqlKS7ELk7KAM)
 ```sh
@@ -34,12 +41,6 @@ sudo pacman -S emptty
 systemctl enable emptty.service
 ```
 
-🔧 Script
-```sh
-git clone https://github.com/danxnya/hypr.danna.git && cd hypr.danna/
-chmod +x setup.sh
-./setup.sh
-```
 Now, only wait and ENJOY. ><
 
 
