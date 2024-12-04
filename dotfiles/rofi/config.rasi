@@ -1,16 +1,8 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * 
- * Rofi Theme File
- * Rofi Version: 1.7.3
- **/
 
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun,run,window";
-    show-icons:                 false;
+    show-icons:                 true;
     display-drun:               " ";
     display-run:                " ";
     display-filebrowser:        " ";
@@ -53,12 +45,12 @@ configuration {
 window {
     /* properties for window widget */
     transparency:                "real";
-    location:                    center;
-    anchor:                      center;
+    location:                    center;  
+    anchor:                      center;  
     fullscreen:                  false;
     width:                       300px;
-    x-offset:                    0px;
-    y-offset:                    0px;
+    x-offset:                    4px;   /* Ajusta x-offset según necesites para una separación */
+    y-offset:                    29px;
 
     /* properties for all widgets */
     enabled:                     true;
@@ -79,6 +71,7 @@ window {
     /* Angle Linear Gradient */
     //background-image:          linear-gradient(45, cyan, purple, indigo);
 }
+
 
 /*****----- Main Box -----*****/
 mainbox {

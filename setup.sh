@@ -18,7 +18,6 @@ install_packages_yay=(
     bat 
     zsh-syntax-highlighting 
     zsh-autosuggestions 
-    uwufetch
     neovim
     wget 
     unzip
@@ -26,11 +25,12 @@ install_packages_yay=(
     w3m
     imagemagick
     rustup
-    firefox
+    chromium
     wf-recorder
     rofi
     betterdiscordctl
-    swwww
+    swww
+    vesktop
 )
 
 # VARIABLE TO STORE INSTALLATION LOGS
@@ -138,6 +138,7 @@ function copia() {
     echo -en "\e[33m[x] Copying configuration...\e[0m\n"
     echo -en "dotfiles."
 
+    # make directories
     mkdir -p "$HOME/.config" > /dev/null 2>&1
 
     mkdir -p "$HOME/.config/hypr" > /dev/null 2>&1
@@ -149,17 +150,37 @@ function copia() {
     mkdir -p "$HOME/.config/kitty" > /dev/null 2>&1
     cp -r $1/dotfiles/kitty/* "$HOME/.config/kitty/"
 
-    mkdir -p "$HOME/.config/BetterDiscord" > /dev/null 2>&1
-    cp -r $1/dotfiles/BetterDiscord/* "$HOME/.config/BetterDiscord/"
+    mkdir -p "$HOME/.config/vesktop" > /dev/null 2>&1
+    cp -r $1/dotfiles/vesktop/* "$HOME/.config/vesktop/"
+
+    # dunst
+    mkdir -p "$HOME/.config/dunst" > /dev/null 2>&1
+    cp -r $1/dotfiles/dunst/* "$HOME/.config/dunst/"
+
+    # fastfetch
+    mkdir -p "$HOME/.config/fastfetch" > /dev/null 2>&1
+    cp -r $1/dotfiles/fastfetch/* "$HOME/.config/fastfetch/"
+
+    # spicetify
+    mkdir -p "$HOME/.config/spicetify" > /dev/null 2>&1
+    cp -r $1/dotfiles/spicetify/* "$HOME/.config/spicetify/"
+
+    # gtk 3 and gtk 4
+    mkdir -p "$HOME/.config/gtk-3.0" > /dev/null 2>&1
+    cp -r $1/dotfiles/gtk-3.0/* "$HOME/.config/gtk-3.0/"
+    mkdir -p "$HOME/.config/gtk-4.0" > /dev/null 2>&1
+    cp -r $1/dotfiles/gtk-4.0/* "$HOME/.config/gtk-4.0/"
 
     mkdir -p "$HOME/.config/waybar" > /dev/null 2>&1
     cp -r $1/dotfiles/waybar/* "$HOME/.config/waybar/"
-    chmod +x "$HOME/.config/waybar/scripts/mediaplayer.py" "$HOME/.config/waybar/scripts/wlrecord.sh"
-    chmod +x "$HOME/.config/waybar/scripts/playerctl/playerctl.sh"
+    chmod +x "$HOME/.config/waybar/scripts/mediaplayer.py" 
     chmod +x "$HOME/.config/waybar/scripts/screen.sh"
-    chmod +x "$HOME/.config/waybar/scripts/spotify.sh"
-    chmod +x "$HOME/.config/waybar/scripts/rofi-wifi-menu.sh"
-    chmod +x "$HOME/.config/waybar/scripts/rofi-bluetooth.sh"
+    chmod +x "$HOME/.config/waybar/scripts/bluetooth.sh"
+    chmod +x "$HOME/.config/waybar/scripts/network-menu.sh"
+    chmod +x "$HOME/.config/waybar/scripts/network-status.sh"
+    chmod +x "$HOME/.config/waybar/scripts/switch.sh"
+    chmod +x "$HOME/.config/waybar/scripts/swww.sh"
+    chmod +x "$HOME/.config/waybar/scripts/volumecontrol.sh"
 
     sudo usermod --shell /usr/bin/zsh $USER > /dev/null 2>&1
     sudo usermod --shell /usr/bin/zsh root > /dev/null 2>&1
@@ -194,7 +215,7 @@ function copia() {
 
 function finalizacion() {
     echo ""
-    echo "All good?. ><"
+    echo "Well, all right? restart and enjoy:)"
     echo ""
 }
 
@@ -215,10 +236,10 @@ if [ $(whoami) != 'root' ]; then
     present
     # confirmation to proceed with installation
     echo -en '\n'
-    read -rep 'Shall we proceed with the installation? (y,n)? ' CONTINST
-    if [[ $CONTINST == "Y" || $CONTINST == "y" ]]; then
+    read -rep 'Install? (y,n)? ' CONTINST
+    if [[ $CONTINST == "Y" || $CONTINST == "y" || $CONTINST == "yes" ]]; then
         echo -en "\n"
-        echo -en "\e[33m[x] Starting >.<...\e[0m\n"
+        echo -en "\e[33m[x] Installing >.<...\e[0m\n"
         sudo touch /tmp/hyprv.tmp
         call
     else

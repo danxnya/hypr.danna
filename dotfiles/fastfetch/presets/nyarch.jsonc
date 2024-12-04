@@ -15,15 +15,15 @@
         "separator": " "
     },
     "modules": [
-        "break",
-        "break",
+        //"break",
+        //"break",
         {
             "type": "title",
             "keyWidth": 10
         },
         {
             "type": "custom",
-            "format": "\n",
+            "format": "",
 
         },
         {
@@ -54,21 +54,6 @@
         },
         {
             "type": "wm",
-            "key": "~ ",
-            "keyColor": "34", 
-        },
-        {
-            "type": "uptime",
-            "key": "~ ",
-            "keyColor": "34", 
-        },
-        {
-            "type": "media",
-            "key": "~ ",
-            "keyColor": "34", 
-        },
-        {
-            "type": "player",
             "key": "~ ",
             "keyColor": "34", 
         },

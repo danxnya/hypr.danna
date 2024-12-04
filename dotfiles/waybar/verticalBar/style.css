@@ -1,0 +1,55 @@
+
+  * {
+    background: transparent;
+    border: none;
+    font-family: "Maple Mono SC NF";
+    font-weight: bold;
+    font-size: 12px;
+    min-height: 11px;
+    border-radius: 0px;
+}
+  
+  window#waybar {
+    background: rgba(11, 10, 16, 0.95);
+    color: rgba(214, 222, 235, 1);
+    border: 2px solid rgba(250, 144, 187, 1);
+  }
+  
+  #workspaces button {
+    color: rgba(214, 222, 235, 1);
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding:2px 0px;
+  }
+  
+  #workspaces button.active {
+    background: rgba(250, 144, 187, 1);
+    color: rgba(1, 22, 39, 1);
+  }
+  
+  #workspaces button:hover {
+    background: rgba(255, 223, 193, 1);
+    color: rgba(1, 22, 39, 1);
+  }
+  
+  #image, #workspaces, #clock {
+    padding: 10px 9px;
+    
+  }
+
+#custom-playerlabel, #pulseaudio, #tray, #battery, #backlight {
+
+  margin-top: 3px;
+  margin-bottom: 3px;
+  color: rgba(214, 222, 235, 1);
+
+}
+
+    #tray>.passive {
+      -gtk-icon-effect: dim;
+    }
+    
+    #tray>.needs-attention {
+      -gtk-icon-effect: highlight;
+      background-color: #eb4d4b;
+    }

@@ -1,0 +1,217 @@
+/* Importación de temas */
+@import "theme.css";
+
+/* Estilos globales */
+* {
+    border: none;
+    font-family: "Maple Mono SC NF";
+    font-weight: bold;
+    font-size: 13px;
+    min-height: 11px;
+}
+
+/* Estilos de la ventana principal */
+window#waybar {
+    background: @main-bg;
+    border-radius: 0px;
+    border: 2px solid @pink;
+
+}
+
+/* Tooltip */
+tooltip {
+    background: @main-bg;
+    color: @text;
+    border: 1px solid white;
+    border-radius: 0px;
+}
+
+/* Botones de espacios de trabajo */
+#workspaces button {
+    box-shadow: none;
+    padding: 0 2px;
+    margin: 2px 0;
+    border-radius: 0px;
+    color: @text-alt;
+    animation: ws_normal 20s ease-in-out 1;
+}
+
+#workspaces button.active {
+    background: @text;
+    color: @bar-bg;
+    margin: 2px;
+    padding: 0 2px;
+    animation: ws_active 2s ease-in-out 1;
+}
+
+#workspaces button:hover {
+    background: @wb-hvr-bg;
+    color: @wb-hvr-fg;
+    animation: ws_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+/* Espaciado de módulos */
+#custom-ws,
+#workspaces,
+#window,
+#custom-cpuinfo,
+#memory,
+#cpu,
+#clock,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-power,
+#bluetooth,
+#mpris,
+#custom-notifications {
+    margin-bottom: 0;
+    padding: 0 4px;
+    color: @text-alt;
+    opacity: 1;
+}
+
+/* Módulos específicos */
+
+/* Icono de ventana */
+#custom-paddl {
+    font-size: 11.5pt;
+    margin-bottom: -2px;
+    padding-right: 2px;
+    background: transparent;
+}
+
+/* Espacios de trabajo */
+#workspaces {
+    border: 2px solid @text;
+    border-radius: 0px;
+    padding: 0;
+    background: @bar-bg;
+}
+
+/* Título de la ventana */
+#window {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+}
+
+/* Temperatura */
+#custom-paddc {
+    padding-right: 3px;
+}
+
+/* Reloj - Hora */
+#clock.time {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    background: @bar-bg;
+    color: @text-alt;
+}
+
+/* Reloj - Fecha */
+#clock.date {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    border-radius: 0px;
+    background: @bar-bg;
+    color: @text-alt;
+}
+
+/* Conexión Wi-Fi */
+#custom-wifi {
+    padding: 0 4px;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    border-radius: 0px;
+    background: @bar-bg;
+    color: @text-alt;
+}
+
+/* Información de medios */
+#custom-playerlabel {
+    background-color: @bar-bg;
+    padding: 0 8px;
+    border-radius: 0px;
+    color: @text-alt;
+    border: 2px solid @text;
+    margin: 0 3px;
+}
+
+/* Audio */
+#pulseaudio {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    background: @bar-bg;
+    border-radius: 0px;
+    color: @text-alt;
+}
+
+/* Batería */
+#battery {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    background: @bar-bg;
+    border-radius: 0px;
+    color: @text-alt;
+}
+
+/* Botón de energía */
+#custom-power {
+    color: @bar-bg;
+    background: @text;
+    margin: 2px 2px 2px 7px;
+    padding: 0 7px;
+    border-radius: 0px;
+}
+
+/* Icono de poder */
+#custom-paddr {
+    font-size: 11.5pt;
+    color: @main-bg;
+    margin-bottom: -2px;
+}
+
+
+#image {
+    border: 2px solid @text;
+    border-radius: 0px;
+    padding: 0 3px;
+    margin-right: 3px;
+    background: @bar-bg;
+}
+
+
+
+/* Bandeja del sistema */
+#tray {
+    background-color: @bar-bg;
+    color: #CDD6F4;
+    border-radius: 0px;
+    padding: 0 6px;
+    margin: 0 3px;
+    border: 2px solid @text;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+/* Módulos a la derecha */
+.modules-right {
+    background-color: @bar-bg;
+    border-radius: 0px;
+    border: 2px solid @text;
+}
+
+/* Swww */
+#custom-swww {
+    padding: 0 4px 0 8px;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    border-radius: 0px;
+    background: @bar-bg;
+    color: @text-alt;
+}
+
+#bluetooth {
+    margin-left: 5px;
+}
