@@ -1,0 +1,237 @@
+//===========================================================================
+//
+//
+//███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ ██████╗ ██████╗  ██████╗ ███╗   ███╗
+//████╗ ████║██╔══██╗██╔══██╗██║██╔═══██╗██╔══██╗██╔══██╗██╔═══██╗████╗ ████║
+//██╔████╔██║███████║██████╔╝██║██║   ██║██████╔╝██████╔╝██║   ██║██╔████╔██║
+//██║╚██╔╝██║██╔══██║██╔══██╗██║██║   ██║██╔══██╗██╔══██╗██║   ██║██║╚██╔╝██║
+//██║ ╚═╝ ██║██║  ██║██║  ██║██║╚██████╔╝██║  ██║██║  ██║╚██████╔╝██║ ╚═╝ ██║
+//╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═╝ ╚═╝ ╚═════╝ ╚═╝     ╚═╝                                                                          
+//                          MarioRRom's Dotfiles
+//                 https://github.com/MarioRRom/bspwm-dotfiles
+//===========================================================================
+
+
+//  .------------------------.
+//  | .--------------------. |
+//  | |     Principal      | |
+//  | `--------------------' |
+//  `------------------------'
+
+.centerpanel {
+    background-color: $mantle;
+    margin: 10px;
+}
+
+
+//  .------------------------.
+//  | .--------------------. |
+//  | |   Notificaciones   | |
+//  | `--------------------' |
+//  `------------------------'
+
+.box-notificaciones {
+    background-color: $base;
+    border-radius: 15px;
+
+    .sin-not-bell {
+        font-family: Material Icons;
+        color: $surface2;
+        font-size: 100px;
+        margin: -30px -25px -30px -30px;
+    }
+
+    .sin-not-text {
+        font-family: Sofia Pro;
+        font-size: 20px;
+        color: $surface2;
+    }
+
+    .scrollbox {
+        margin: 10px;
+    }
+
+    .limpiar-boton  {
+        background-color: $base;
+        border-radius: 12px;
+
+        .texto {
+            font-family: Sofia Pro;
+            font-size: 15px;
+            margin: 10px;
+        }
+
+        &:hover {
+            background-color: $surface0;
+        }
+
+        &:active {
+            background-color: $surface2;
+        }
+    }
+}
+
+.notificacion-card {
+    background-color: $surface0;
+    border-radius: 12px;
+    font-family: Sofia Pro;
+
+    .icono {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        min-width: 60px;
+        min-height: 60px;
+        border-radius: 10px;
+        margin: 8px 2px 8px 2px;
+    }
+
+    .app {
+        font-size: 16px;
+        font-weight: bold;
+        color: $sky;
+        margin-top: 10px;
+    }
+
+    .titulo {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .contenido {
+        font-size: 12px;
+    }
+}
+
+
+//  .------------------------.
+//  | .--------------------. |
+//  | |    Fecha y Hora    | |
+//  | `--------------------' |
+//  `------------------------'
+
+.hora {
+    font-family: Sofia Pro;
+    font-weight: bold;
+    font-size: 60px;
+    margin-top: 14px;
+    text-shadow: 4px 4px 5px #000000;
+}
+
+.dia {
+    font-family: Sofia Pro;
+    font-size: 35px;
+    margin-top: -10px;
+    color: $green;
+    text-shadow: 4px 4px 5px #000000;
+}
+
+.calendarbox {
+    background-color: $base;
+    padding: 10px 10px 0px 10px;
+    border-radius: 15px;
+    text-shadow: 4px 4px 5px #000000;
+}
+
+.calendario {
+    font-family: Sofia Pro;
+    background-color: inherit;
+    padding: 4px 0px 4px 0px;
+
+    & > * {
+        border: solid 0px transparent;
+    }
+
+    &:selected {
+        color: $sky;
+        font-weight: bold;
+        text-shadow: 0 0 4px $blue;
+    }
+
+    &.header {
+        color: $green;
+    }
+
+    &.button {
+        color: $peach;
+    }
+
+    &.highlight {
+        color: $mauve;
+    }
+
+    &:indeterminate {
+        color: $surface2;
+    }
+}
+
+
+//  .------------------------.
+//  | .--------------------. |
+//  | |       Clima        | |
+//  | `--------------------' |
+//  `------------------------'
+.climabox {
+    background-color: $base;
+    padding: 6px 0px 6px 18px;
+    border-radius: 15px;
+    box-shadow: inset 5px -5px 10px $base;
+
+    .climaicon {
+        font-family: Sofia Pro;
+        font-size: 100px;
+        margin-right: 45px;
+        margin-top: -5px;
+        text-shadow: 2px 2px 5px #000000;
+    }
+
+    .climatemp {
+        font-family: Sofia Pro;
+        font-weight: lighter;
+        font-size: 40px;
+        margin-bottom: -5px;
+        text-shadow: 2px 2px 5px #000000;
+    }
+
+    .climadesc {
+        font-family: Sofia Pro;
+        font-size: 15px;
+        font-weight: lighter;
+        margin-bottom: -6px;
+        text-shadow: 2px 2px 3px #000000;
+    }
+
+    .climasep {
+        font-family: Sofia Pro;
+        font-weight: lighter;
+        font-size: 15px;
+        color: $text;
+        margin-bottom: -8px;
+        text-shadow: 2px 2px 3px #000000;
+    }
+
+    .climaubi {
+        font-family: Sofia Pro;
+        font-size: 15px;
+        font-weight: lighter;
+        margin-bottom: -4px;
+        text-shadow: 2px 2px 3px #000000;
+    }
+
+    .climavien {
+        font-family: Sofia Pro;
+        font-size: 15px;
+        font-weight: lighter;
+        margin-bottom: -4px;
+        margin-left: -2px;
+        text-shadow: 2px 2px 3px #000000;
+    }
+
+    .climahum {
+        font-family: Sofia Pro;
+        font-size: 15px;
+        font-weight: lighter;
+        margin-bottom: -5px;
+        text-shadow: 2px 2px 3px #000000;
+    }
+}

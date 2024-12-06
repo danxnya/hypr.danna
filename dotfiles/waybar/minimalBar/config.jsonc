@@ -9,10 +9,10 @@
     "gtk-layer-shell": true,
     "reload_style_on_change": true,
 
-    "margin-top": 0,
-    "margin-left": 0,
+    "margin-top": 5,
+    "margin-left": 3,
     "margin-bottom": 2,
-    "margin-right": 0,
+    "margin-right": 3,
 
 
 
@@ -171,7 +171,7 @@
         "format": "󰢾",  // use "{}" to display your network name
         "tooltip": true,
         "tooltip-format": "192.168.1.73",
-        "on-click": "~/.config/waybar/scripts/network-menu.sh",
+        "on-click": "eww -c '/home/dam/.config/bspwm/config/eww' open --toggle controlcenter --screen 1"
     },
 
     "custom/playerlabel": {
@@ -181,6 +181,7 @@
         "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} : {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
         "on-click-middle": "playerctl play-pause",
         "on-click": "playerctl previous",
+        //"on-click": "eww -c '/home/dam/.config/bspwm/config/eww' open --toggle centerpanel --screen 1",
         "on-click-right": "playerctl next",
         "tooltip": false
       },

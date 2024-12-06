@@ -1,0 +1,46 @@
+//===========================================================================
+//
+//
+//███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ ██████╗ ██████╗  ██████╗ ███╗   ███╗
+//████╗ ████║██╔══██╗██╔══██╗██║██╔═══██╗██╔══██╗██╔══██╗██╔═══██╗████╗ ████║
+//██╔████╔██║███████║██████╔╝██║██║   ██║██████╔╝██████╔╝██║   ██║██╔████╔██║
+//██║╚██╔╝██║██╔══██║██╔══██╗██║██║   ██║██╔══██╗██╔══██╗██║   ██║██║╚██╔╝██║
+//██║ ╚═╝ ██║██║  ██║██║  ██║██║╚██████╔╝██║  ██║██║  ██║╚██████╔╝██║ ╚═╝ ██║
+//╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═╝ ╚═╝ ╚═════╝ ╚═╝     ╚═╝                                                                          
+//                          MarioRRom's Dotfiles
+//                 https://github.com/MarioRRom/bspwm-dotfiles
+//===========================================================================
+
+
+.systray {
+    background-color: $mantle;
+    margin: 10px;
+}
+
+.systemtray menu {
+    padding: 5px 5px;
+    background-color: $mantle;
+
+    >menuitem {
+        background-color: $base;
+        border-radius: 10px;
+        font-family: Sofia Pro;
+        font-size: 15px;
+        margin: 5px 5px;
+        padding: 5px 5px;
+        color: $text;
+
+        &:disabled label {
+            color: $overlay0;
+        }
+
+        &:hover {
+            color: $sky;
+        }
+    }
+
+    separator {
+        background-color: $surface0;
+        padding-top: 1px;
+    }
+}

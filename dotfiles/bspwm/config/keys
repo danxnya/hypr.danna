@@ -1,0 +1,93 @@
+#===========================================================================
+#
+#
+#███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ ██████╗ ██████╗  ██████╗ ███╗   ███╗
+#████╗ ████║██╔══██╗██╔══██╗██║██╔═══██╗██╔══██╗██╔══██╗██╔═══██╗████╗ ████║
+#██╔████╔██║███████║██████╔╝██║██║   ██║██████╔╝██████╔╝██║   ██║██╔████╔██║
+#██║╚██╔╝██║██╔══██║██╔══██╗██║██║   ██║██╔══██╗██╔══██╗██║   ██║██║╚██╔╝██║
+#██║ ╚═╝ ██║██║  ██║██║  ██║██║╚██████╔╝██║  ██║██║  ██║╚██████╔╝██║ ╚═╝ ██║
+#╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═╝ ╚═╝ ╚═════╝ ╚═╝     ╚═╝                                                                          
+#                          MarioRRom's Dotfiles
+#                 https://github.com/MarioRRom/bspwm-dotfiles
+#===========================================================================
+
+#  .------------------------.
+#  | .--------------------. |
+#  | |  Atajos de BSPWM   | |
+#  | `--------------------' |
+#  `------------------------'
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# Cerrar & Matar Ventana
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# focus and move windows
+super + {_,shift + }{Left,Down,Up,Right}
+       bspc node -{f,s} {west,south,north,east}
+
+# focus desktop
+super + {1-6}
+	bspc desktop -f $(bspc query -M -m | cut -d' ' -f1):^{1-6}
+
+# Mover la ventana actual al escritorio 1-6 según la ubicación del mouse
+super + shift + {1-6}
+    bspc node -d $(bspc query -M -m | cut -d' ' -f1):^{1-6}
+
+
+#  .------------------------.
+#  | .--------------------. |
+#  | |  Atajos Externos   | |
+#  | `--------------------' |
+#  `------------------------'
+
+# terminal emulator
+super + Return
+	alacritty
+
+# program launcher
+super + d
+	rofi -show drun -theme ~/.config/bspwm/config/rofi/launcher.rasi
+
+# program launcher
+super + Tab
+	rofi -show window -theme ~/.config/bspwm/config/rofi/window.rasi
+
+# Explorador de Archivos
+super + shift + e
+	nautilus
+
+# Navegador
+super + shift + f
+	firefox
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Screenshot
+alt + Print
+	flameshot gui
+
+# Volume control
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	Volume{ --aum, --baj, --muteo}
+
+# Music Control
+XF86Audio{Next,Prev,Play,Stop}
+	playerctl{ next, previous, play-pause, stop}
+
+# Control de Brillo
+XF86MonBrightness{Up,Down}
+	Brightness{ --aum, --baj}

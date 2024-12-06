@@ -3,8 +3,8 @@
 /* @define-color bar-bg rgba(0, 0, 0, 0); */
 
 @define-color main-bg rgba(11, 10, 16, 0.95);
-/*@define-color text rgba(250,144,187,1);*/
-@define-color text #cba6f7;
+@define-color text rgba(250,144,187,1);
+/*@define-color text #cba6f7;*/
 @define-color text-alt #ebebeb;
 @define-color pink rgba(250,144,187,0);
 

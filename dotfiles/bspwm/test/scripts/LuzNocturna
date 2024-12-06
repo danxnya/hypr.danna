@@ -1,0 +1,55 @@
+#!/bin/bash
+#===========================================================================
+#
+#
+#███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ ██████╗ ██████╗  ██████╗ ███╗   ███╗
+#████╗ ████║██╔══██╗██╔══██╗██║██╔═══██╗██╔══██╗██╔══██╗██╔═══██╗████╗ ████║
+#██╔████╔██║███████║██████╔╝██║██║   ██║██████╔╝██████╔╝██║   ██║██╔████╔██║
+#██║╚██╔╝██║██╔══██║██╔══██╗██║██║   ██║██╔══██╗██╔══██╗██║   ██║██║╚██╔╝██║
+#██║ ╚═╝ ██║██║  ██║██║  ██║██║╚██████╔╝██║  ██║██║  ██║╚██████╔╝██║ ╚═╝ ██║
+#╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═╝ ╚═╝ ╚═════╝ ╚═╝     ╚═╝                                                                          
+#                          MarioRRom's Dotfiles
+#                 https://github.com/MarioRRom/bspwm-dotfiles
+#===========================================================================
+
+##   Este script activa y desactiva la luz nocturna   ##
+## util para varios usuarios que usan el pc por horas ##
+
+CACHE_DIR="$HOME/.cache/mariorrom-dotfiles/"
+# Verificar si la carpeta existe y crearla si no
+[ ! -d "$CACHE_DIR" ] && mkdir -p "$CACHE_DIR"
+
+STATUS_FILE="$CACHE_DIR/luz_nocturna.status"
+
+
+# Verificar si Redshift está instalado
+if ! command -v redshift &> /dev/null; then
+    notify-send "Redshift no está instalado" "Por favor, instala Redshift para usar la luz nocturna."
+    exit 1
+fi
+
+# Función para mostrar el estado actual de Redshift
+check_status() {
+    if [[ -f $STATUS_FILE ]]; then
+        echo "encendido"
+    else
+        echo "apagado"
+    fi
+}
+
+# Comprobar los argumentos
+if [[ $1 == "--status" ]]; then
+    check_status
+    exit 0
+fi
+
+# Comprobar el estado actual de Redshift usando el archivo de estado
+if [[ -f $STATUS_FILE ]]; then
+    # Si el archivo de estado existe, desactivarlo
+    redshift -x
+    rm -f "$STATUS_FILE"  # Eliminar el archivo de estado
+else
+    # Si el archivo de estado no existe, activarlo
+    redshift -O 3500 &
+    touch "$STATUS_FILE"  # Crear el archivo de estado
+fi

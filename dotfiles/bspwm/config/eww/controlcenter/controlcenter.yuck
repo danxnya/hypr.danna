@@ -1,0 +1,140 @@
+;;===========================================================================
+;;
+;; Configuración de Control Center para Hyprland
+;;
+;;===========================================================================
+
+
+;;  .------------------------.
+;;  | .--------------------. |
+;;  | |     Variables      | |
+;;  | `--------------------' |
+;;  `------------------------'
+
+;; Internet
+(defpoll NETICON :interval "5s" "Network --icono")
+
+;; Barras de control
+(defpoll GETVOLUME :interval "1s" :initial "50" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}'")
+(defpoll GETICONVOLUME :interval "1s" :initial "󰕾" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print ($1 == \"MUTED\") ? \"󰖁\" : \"󰕾\"}'")
+(defpoll GETMICRO :interval "1s" :initial "50" "wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | awk '{print int($2 * 100)}'")
+(defpoll GETBRIGHT :interval "1s" :initial "50" "brightnessctl g | awk -v max=$(brightnessctl m) '{print int(($1/max) * 100)}'")
+(defpoll GETICONBRIGHT :interval "1s" :initial "󰃠" "echo '󰃠'")  ;; Ícono fijo para brillo
+
+
+;;  .------------------------.
+;;  | .--------------------. |
+;;  | |    Widget Base     | |
+;;  | `--------------------' |
+;;  `------------------------'
+
+(defwidget controlcenter []
+
+    ;; Box Principal
+    (box
+        :orientation "v"
+        :spacing 10
+        :space-evenly false
+
+        ;; Cuatro Finales
+        (box
+            :orientation "h"
+            :spacing 10
+            (eventbox
+                :class "ccpanelsqbtn"
+                :onclick "SetWallpaper --change"
+                (box
+                    :halign "center"
+                    :tooltip "Hacer un cambio rápido de Wallpaper"
+                    (label :class "ccicon" :text "")
+                )
+            )
+            (eventbox
+                :class "ccpanelsqbtn"
+                (box
+                    :halign "center"
+                    (label :class "ccicon" :text "x")
+                )
+            )
+            (eventbox
+                :class "ccpanelsqbtn"
+                (box
+                    :halign "center"
+                    (label :class "ccicon" :text "x")
+                )
+            )
+        )
+        
+        ;; Slider de Volumen
+        (box
+            :class "volumeslider"
+            :orientation "h"
+            :halign "center"
+            :spacing 10
+            :space-evenly false
+            (label :class "volumeicon" :text GETICONVOLUME)
+            (scale
+                :min "0"
+                :max "100"
+                :value GETVOLUME
+                :orientation "horizontal"
+                :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%"
+            )
+        )
+
+        ;; Slider de Micrófono
+        (box
+            :class "microslider"
+            :orientation "h"
+            :halign "center"
+            :spacing 10
+            :space-evenly false
+            (label :class "microicon" :text "")
+            (scale
+                :min "0"
+                :max "100"
+                :value GETMICRO
+                :orientation "horizontal"
+                :onchange "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ {}%"
+            )
+        )
+
+        ;; Slider de Brillo
+        (box
+            :class "brightslider"
+            :orientation "h"
+            :halign "center"
+            :spacing 10
+            :space-evenly false
+            (label :class "brighticon" :text GETICONBRIGHT)
+            (scale
+                :min "0"
+                :max "100"
+                :value GETBRIGHT
+                :orientation "horizontal"
+                :onchange "brightnessctl s {}%"
+            )
+        )
+    )
+)
+
+
+;;  .------------------------.
+;;  | .--------------------. |
+;;  | |      Ventana       | |
+;;  | `--------------------' |
+;;  `------------------------'
+
+(defwindow controlcenter
+    :stacking "fg"
+    :windowtype "normal"
+    :wm-ignore false
+    :geometry (geometry
+        :x "-12"
+        :y "58px"
+        :anchor "top right"
+        :width "350px"
+        :height "300px"
+    )
+    (controlcenter)
+)

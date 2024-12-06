@@ -1,0 +1,42 @@
+#!/bin/sh
+#===========================================================================
+#
+#
+#███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ ██████╗ ██████╗  ██████╗ ███╗   ███╗
+#████╗ ████║██╔══██╗██╔══██╗██║██╔═══██╗██╔══██╗██╔══██╗██╔═══██╗████╗ ████║
+#██╔████╔██║███████║██████╔╝██║██║   ██║██████╔╝██████╔╝██║   ██║██╔████╔██║
+#██║╚██╔╝██║██╔══██║██╔══██╗██║██║   ██║██╔══██╗██╔══██╗██║   ██║██║╚██╔╝██║
+#██║ ╚═╝ ██║██║  ██║██║  ██║██║╚██████╔╝██║  ██║██║  ██║╚██████╔╝██║ ╚═╝ ██║
+#╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝                                                                          
+#                          MarioRRom's Dotfiles
+#
+#===========================================================================
+
+
+##        Este script crea un archivo temporal con el numero de actualizaciones         ##
+## Luego ese numero se puede importar en distintos widgets, asi no repetimos el proceso ##
+
+# Carpeta de archivos temporales de dotfiles.
+CACHE_DIR="${HOME}/.cache/mariorrom-dotfiles/"
+# Verificar si la carpeta existe y crearla si no
+[ ! -d "$CACHE_DIR" ] && mkdir -p "$CACHE_DIR"
+
+# Archivo que contendra el numeo de actualizaciones.
+TEMP_FILE="$CACHE_DIR/updates_count"
+
+# Función para obtener el número de actualizaciones
+get_updates() {
+    local pacman_updates=$(checkupdates 2> /dev/null | wc -l)
+
+    # Guardar el número total de actualizaciones en el archivo temporal
+    echo "$pacman_updates" > "$TEMP_FILE"
+}
+
+get_updates
+
+# Bucle para ejecutar el script cada hora
+while true; do
+    echo "numero de actualizaciones listo"
+    sleep 3600  # Espera 1 hora (3600 segundos)
+    get_updates
+done

@@ -1,0 +1,94 @@
+#!/bin/bash
+#===========================================================================
+#
+#
+#███╗   ███╗ █████╗ ██████╗ ██╗ ██████╗ ██████╗ ██████╗  ██████╗ ███╗   ███╗
+#████╗ ████║██╔══██╗██╔══██╗██║██╔═══██╗██╔══██╗██╔══██╗██╔═══██╗████╗ ████║
+#██╔████╔██║███████║██████╔╝██║██║   ██║██████╔╝██████╔╝██║   ██║██╔████╔██║
+#██║╚██╔╝██║██╔══██║██╔══██╗██║██║   ██║██╔══██╗██╔══██╗██║   ██║██║╚██╔╝██║
+#██║ ╚═╝ ██║██║  ██║██║  ██║██║╚██████╔╝██║  ██║██║  ██║╚██████╔╝██║ ╚═╝ ██║
+#╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═╝ ╚═╝ ╚═════╝ ╚═╝     ╚═╝                                                                          
+#                          MarioRRom's Dotfiles
+#                 https://github.com/MarioRRom/bspwm-dotfiles
+#===========================================================================
+
+##  ESTE SCRIPT GESTIONA EL BRILLO DE TU LAPTOP DE MANERA INTEGRADA CON   ##
+##    TODOS LOS WIDGETS DE LOS DOTFILES, PERMITIENDO SER MAS EFICIENTE    ##
+
+
+# Obtener el brillo actual
+get_brightness() {
+    brightnessctl get
+}
+
+# Obtener el brillo máximo
+get_max_brightness() {
+    brightnessctl max
+}
+
+# Calcular porcentaje de brillo
+get_brightness_percentage() {
+    current=$(get_brightness)
+    max=$(get_max_brightness)
+    echo $((current * 100 / max))
+}
+
+# Determinar el Icono
+get_icon() {
+    current=$(get_brightness_percentage)
+    if [ "$current" -eq 0 ]; then
+        echo "󰃞"  # Icono para brillo apagado
+    elif [ "$current" -le 25 ]; then
+        echo "󰃞"  # Icono para brillo bajo
+    elif [ "$current" -le 50 ]; then
+        echo "󰃝"  # Icono para brillo medio
+    elif [ "$current" -le 75 ]; then
+        echo "󰃟"  # Icono para brillo alto
+    else
+        echo "󰃠"  # Icono para brillo máximo
+    fi
+}
+
+# Actualizar Eww
+update_eww() {
+    Eww update GETBRIGHT=$(get_brightness_percentage)
+    Eww update GETICONBRIGHT=$(get_icon)
+}
+
+# Aumentar el brillo
+inc_brightness() {
+    brightnessctl set +10% && update_eww
+    Eww-popups --brightness &
+}
+
+# Disminuir el brillo
+dec_brightness() {
+    brightnessctl set 10%- && update_eww
+    Eww-popups --brightness &
+}
+
+# Ajustar el brillo a un valor específico
+set_brightness() {
+    brightnessctl set "$1%" && Eww update GETICONBRIGHT=$(get_icon)
+}
+
+# Ejecutar
+if [ -x $(which brightnessctl) ]; then
+    if [[ "$1" == "--get" ]]; then
+        get_brightness_percentage
+    elif [[ "$1" == "--aum" ]]; then
+        inc_brightness
+        sleep 2
+    elif [[ "$1" == "--baj" ]]; then
+        dec_brightness
+        sleep 2
+    elif [[ "$1" == "--set" && -n "$2" ]]; then
+        set_brightness "$2"
+    elif [[ "$1" == "--icon" ]]; then
+        get_icon
+    else
+        echo "Uso: --get --aum --baj --set --icon"
+    fi
+else
+    notify-send "'brightnessctl' no está instalado."
+fi
